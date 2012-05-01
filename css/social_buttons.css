@@ -1,0 +1,19 @@
+.social-buttons:before,
+.social-buttons:after {
+    content: "";
+    display: table;
+}
+
+.social-buttons:after {
+    clear: both;
+}
+
+.social-buttons {
+    zoom: 1;
+}
+
+
+.social-buttons div {
+  display: inline;
+  float: left;
+}
