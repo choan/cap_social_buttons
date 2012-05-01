@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 Plugin Name: Social Buttons
 Plugin URI: http://choangalvez.nom.es/
@@ -14,7 +14,6 @@ define('SOCIAL_BUTTONS_FILE', __FILE__);
 
 require SOCIAL_BUTTONS_INCLUDE_PATH . '/tags.php';
 require SOCIAL_BUTTONS_INCLUDE_PATH . '/class.social_buttons.php';
-
 
 add_filter('the_content', array(SocialButtons::instance(), 'the_content'));
 add_action('wp_footer', array(SocialButtons::instance(), 'footer'));

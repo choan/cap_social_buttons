@@ -1,6 +1,6 @@
-<?php 
+<?php
 class SocialButtons {
-  
+
   private static $instance;
 
   static $defaults = array(
@@ -34,10 +34,10 @@ class SocialButtons {
     return $b ? 'true' : 'false';
   }
 
-  
+
   public function __construct() {
   }
-  
+
   public function instance() {
     if (!self::$instance) {
       $name = __CLASS__;
@@ -45,7 +45,7 @@ class SocialButtons {
     }
     return self::$instance;
   }
-  
+
   public function enqueue_scripts() {
     wp_register_style(
         'social_buttons.css',
@@ -55,7 +55,7 @@ class SocialButtons {
     );
     wp_enqueue_style('social_buttons.css');
   }
-  
+
   public function the_content($content) {
     $buttons = $this->the_buttons();
     $pre = $post = '';
@@ -64,9 +64,9 @@ class SocialButtons {
     if ($this->get_option('buttons_after_content'))
       $post = $buttons;
     return "$pre\n$content\n$post";
-    
+
   }
-  
+
   public function the_buttons() {
     $active_buttons = $this->get_option('services');
     $buttons = array_map(array($this, 'the_buttons_callback'), $active_buttons);
@@ -82,7 +82,7 @@ class SocialButtons {
     $out = join("\n", $footers);
     print $out;
   }
-  
+
   private function get_option($name) {
     static $stored;
     // TODO: tomar opcion de la DB cuando todo esté listo
@@ -92,10 +92,10 @@ class SocialButtons {
     }
     return null;
   }
-  
+
   private function facebook_like_button() {
     global $post;
-    $options = $this->get_option('facebook_like');		
+    $options = $this->get_option('facebook_like');
     $url = get_permalink();
     if ($options['implementation'] == 'html5') {
       $template = '<div class="fb-like" data-href="%1$s" data-send="%2$s" data-layout="%3$s" data-width="%4$s" data-show-faces="%5$s"></div>';
@@ -107,11 +107,11 @@ class SocialButtons {
     if ($options['send'] && $options['layout'] == 'button_count') {
       $options['send'] = false;
     }
-    
+
     $buttons = sprintf($template, $url, self::bool_to_s($options['send']), $options['layout'], $options['width'], self::bool_to_s($options['show_faces']));
     return $buttons;
   }
-  
+
   private function facebook_like_footer() {
     $lang = WPLANG;
     $out = '<div id="fb-root"></div>';
@@ -125,7 +125,7 @@ class SocialButtons {
     }(document, 'script', 'facebook-jssdk'));</script>";
     return $out;
   }
-  
+
   private function twitter_share_button() {
     global $post;
     $options = $this->get_option('twitter_share');
@@ -141,7 +141,7 @@ class SocialButtons {
     $out .= '>Tweet</a>';
     return $out;
   }
-  
+
   private function twitter_share_footer() {
     $out = '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
     return $out;
@@ -149,7 +149,7 @@ class SocialButtons {
 
   private function plus_one_button() {
     global $post;
-    $options = $this->get_option('plus_one');		
+    $options = $this->get_option('plus_one');
     $url = get_permalink();
     if ($options['implementation'] == 'html5') {
       $template = '<div class="g-plusone" data-size="%1$s" data-annotation="%2$s" data-href="%3$s"></div>';
@@ -157,7 +157,7 @@ class SocialButtons {
     else {
       $template = '<g:plusone size="%1$s" annotation="%2$s" href="%3$s"></g:plusone>';
     }
-    
+
     $buttons = sprintf($template, $options['size'], $options['annotation'], $url);
     return $buttons;
   }
@@ -175,7 +175,7 @@ class SocialButtons {
     </script>";
   }
 
-  
+
   private function footer_callback($service) {
     $method = "{$service}_footer";
     if (method_exists($this, $method)) {
@@ -185,16 +185,16 @@ class SocialButtons {
       return '';
     }
   }
-  
+
   private function the_buttons_callback($service) {
     $method = "{$service}_button";
     return sprintf('<div class="social-buttons-%2$s">%1$s</div>', $this->$method(), $service);
   }
-  
+
   private function load_default_options() {
     // TODO: debe ser add cuando todo esté bien
     update_option('social_buttons', self::$defaults);
     return self::$defaults;
   }
-  
+
 }
