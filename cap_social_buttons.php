@@ -14,6 +14,14 @@ define('CAP_SOCIAL_BUTTONS_FILE', __FILE__);
 
 require CAP_SOCIAL_BUTTONS_INCLUDE_PATH . '/tags.php';
 require CAP_SOCIAL_BUTTONS_INCLUDE_PATH . '/class.cap_social_buttons.php';
+require CAP_SOCIAL_BUTTONS_INCLUDE_PATH . '/class.cap_social_buttons_facebook.php';
+require CAP_SOCIAL_BUTTONS_INCLUDE_PATH . '/class.cap_social_buttons_twitter.php';
+require CAP_SOCIAL_BUTTONS_INCLUDE_PATH . '/class.cap_social_buttons_plus_one.php';
+
+add_action('cap_social_buttons_register', array(new CapSocialButtons_Facebook, 'register'));
+add_action('cap_social_buttons_register', array(new CapSocialButtons_Twitter, 'register'));
+add_action('cap_social_buttons_register', array(new CapSocialButtons_PlusOne, 'register'));
+
 
 add_filter('the_content', array(CapSocialButtons::instance(), 'the_content'));
 add_action('wp_footer', array(CapSocialButtons::instance(), 'footer'));
