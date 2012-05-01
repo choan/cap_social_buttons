@@ -14,11 +14,17 @@ Includes social sharing buttons before/after post content.
 
 Social Buttons is Just Another Social Plugin, as it doesn't do any special, we can say its main feature is clean code.
 
-Buttons currently supported:
+Social Buttons can currently output buttons for the following actions:
 
 * Facebook like
-* Tweeter Share
+* Twiter Share
 * Google Plus One
+
+With Social Buttons you can:
+
+* Define options for each button
+* Put the buttons automatically before/after/both/none sides of the content
+* Print the buttons from your theme using `social_buttons_the_buttons`.
 
 Social Buttons requires PHP 5.2.
 

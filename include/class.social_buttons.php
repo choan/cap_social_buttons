@@ -67,8 +67,8 @@ class SocialButtons {
 
   }
 
-  public function the_buttons() {
-    $active_buttons = $this->get_option('services');
+  public function the_buttons($services = array()) {
+    $active_buttons = empty($services) ? $this->get_option('services') : $services;
     $buttons = array_map(array($this, 'the_buttons_callback'), $active_buttons);
     $buttons = join("\n", $buttons);
     if ($wrapper = $this->get_option('wrapper')) {
