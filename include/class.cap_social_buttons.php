@@ -1,5 +1,5 @@
 <?php
-class SocialButtons {
+class CapSocialButtons {
 
   private static $instance;
 
@@ -8,7 +8,7 @@ class SocialButtons {
       'facebook_like',
       'twitter_share',
       'plus_one'),
-    'wrapper' => '<div class="social-buttons">%s</div>',
+    'wrapper' => '<div class="cap-social-buttons">%s</div>',
     'buttons_before_content' => false,
     'buttons_after_content' => false,
     'facebook_like' => array(
@@ -48,12 +48,12 @@ class SocialButtons {
 
   public function enqueue_scripts() {
     wp_register_style(
-        'social_buttons.css',
-        plugins_url(basename(dirname(SOCIAL_BUTTONS_FILE))) . '/css/social_buttons.css',
+        'cap_social_buttons.css',
+        plugins_url(basename(dirname(CAP_SOCIAL_BUTTONS_FILE))) . '/css/cap_social_buttons.css',
         false,
         0.1
     );
-    wp_enqueue_style('social_buttons.css');
+    wp_enqueue_style('cap_social_buttons.css');
   }
 
   public function the_content($content) {
@@ -86,7 +86,7 @@ class SocialButtons {
   private function get_option($name) {
     static $stored;
     // TODO: tomar opcion de la DB cuando todo esté listo
-    $stored || ($stored = get_option('social_buttonsX')) || ($stored = $this->load_default_options());
+    $stored || ($stored = get_option('cap_social_buttonsX')) || ($stored = $this->load_default_options());
     if (isset($stored[$name])) {
       return $stored[$name];
     }
@@ -193,7 +193,7 @@ class SocialButtons {
 
   private function load_default_options() {
     // TODO: debe ser add cuando todo esté bien
-    update_option('social_buttons', self::$defaults);
+    update_option('cap_social_buttons', self::$defaults);
     return self::$defaults;
   }
 

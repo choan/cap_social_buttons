@@ -1,4 +1,4 @@
-=== Social Buttons ===
+=== Cap Social Buttons ===
 
 Contributors: choan
 Donate link: http://choangalvez.nom.es/
@@ -13,7 +13,7 @@ Includes social sharing buttons before/after post content.
 
 == Description ==
 
-Social Buttons is Just Another Social Plugin, as it doesn't do any special, we can say its main feature is a cleanest as possible output code.
+Cap Social Buttons is Just Another Social Plugin. Its main feature is a cleanest as possible output code.
 
 We've been careful to:
 
@@ -21,20 +21,20 @@ We've been careful to:
 * Keep the HTML output by the plugin clean and concise (again, as possible)
 * Look another way while adding the JavaScript calls required by the social services.
 
-Social Buttons can currently output buttons for the following actions:
+Cap Social Buttons can currently output buttons for the following actions:
 
 * Facebook like
 * Twiter Share
 * Google Plus One
 
-With Social Buttons you can:
+With Cap Social Buttons you can:
 
 * Define options for each button
 * Put the buttons automatically before/after/both/none sides of the content
 * Print the buttons from your theme using `social_buttons_the_buttons`.
 * Choose html5/xfbml/... ouput when available
 
-Social Buttons requires Wordpress >= 3.3.2 or better and PHP >= 5.2.
+Cap Social Buttons requires Wordpress >= 3.3.2 or better and PHP >= 5.2.
 
 == Installation ==
 

@@ -1,5 +1,5 @@
 <?php
 
-function social_buttons_the_buttons($services = array()) {
-  print SocialButtons::instance()->the_buttons($services);
+function cap_social_buttons($services = array()) {
+  print CapSocialButtons::instance()->the_buttons($services);
 }

@@ -1,0 +1,19 @@
+.cap-social-buttons:before,
+.cap-social-buttons:after {
+    content: "";
+    display: table;
+}
+
+.cap-social-buttons:after {
+    clear: both;
+}
+
+.cap-social-buttons {
+    zoom: 1;
+}
+
+
+.cap-social-buttons div {
+  display: inline;
+  float: left;
+}
