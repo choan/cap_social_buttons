@@ -4,6 +4,8 @@ class CapSocialButtons {
   private static $instance;
   
   private $plugged = array();
+  
+  private $used_buttons = array();
 
   static $defaults = array(
     'services' => array(
@@ -60,18 +62,22 @@ class CapSocialButtons {
   }
 
   public function the_content($content) {
-    $buttons = $this->the_buttons();
+    $before  = $this->get_option('buttons_before_content');
+    $after   = $this->get_option('buttons_after_content');
     $pre = $post = '';
-    if ($this->get_option('buttons_before_content'))
-      $pre = $buttons;
-    if ($this->get_option('buttons_after_content'))
-      $post = $buttons;
+    if ($before || $after) {
+      $buttons = $this->the_buttons();
+      if ($before)
+        $pre = $buttons;
+      if ($after)
+        $post = $buttons;
+    }
     return "$pre\n$content\n$post";
-
   }
 
   public function the_buttons($services = array()) {
     $active_buttons = empty($services) ? $this->get_option('services') : $services;
+    $this->used_buttons = array_unique(array_merge($this->used_buttons, $active_buttons));
     $buttons = array_map(array($this, 'the_buttons_callback'), $active_buttons);
     $buttons = join("\n", $buttons);
     if ($wrapper = $this->get_option('wrapper')) {
@@ -81,7 +87,7 @@ class CapSocialButtons {
   }
 
   public function footer() {
-    $footers = array_map(array($this, 'footer_callback'), $this->get_option('services'));
+    $footers = array_map(array($this, 'footer_callback'), $this->used_buttons);
     $out = join("\n", $footers);
     print $out;
   }
