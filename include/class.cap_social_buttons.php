@@ -40,10 +40,10 @@ class CapSocialButtons {
 
 
   public function __construct() {
-    do_action('cap_social_buttons_register', $this);
+    // do_action('cap_social_buttons_register', $this);
   }
 
-  public function instance() {
+  static public function instance() {
     if (!self::$instance) {
       $name = __CLASS__;
       self::$instance = new $name;
@@ -94,6 +94,13 @@ class CapSocialButtons {
   
   public function register($name, $callback) {
     $this->plugged[$name] = $callback;
+  }
+  
+  public function addPlugin($class) {
+    $plugin = new $class;
+    foreach ($plugin->provides as $k => $v) {
+      $this->register($k, array($plugin, $v));
+    }
   }
 
   public function get_option($name) {

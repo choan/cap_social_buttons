@@ -2,10 +2,9 @@
 
 class CapSocialButtons_PlusOne {
   
-  public function register($caller) {
-    $caller->register('plus_one_button', array($this, 'button'));
-    $caller->register('plus_one_footer', array($this, 'footer'));
-  }
+  var $provides = array(
+    'plus_one_button' => 'button',
+    'plus_one_footer' => 'footer');
   
   public function button($caller) {
     global $post;

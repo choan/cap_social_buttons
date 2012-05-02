@@ -2,10 +2,9 @@
 
 class CapSocialButtons_Twitter {
   
-  public function register($caller) {
-    $caller->register('twitter_share_button', array($this, 'button'));
-    $caller->register('twitter_share_footer', array($this, 'footer'));
-  }
+  var $provides = array(
+    'twitter_share_button' => 'button',
+    'twitter_share_footer' => 'footer');
   
   public function button($caller) {
     global $post;

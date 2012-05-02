@@ -1,12 +1,11 @@
 <?php
 
-class CapSocialButtons_Facebook {
-  
-  public function register($caller) {
-    $caller->register('facebook_like_button', array($this, 'button'));
-    $caller->register('facebook_like_footer', array($this, 'footer'));
-  }
-  
+class CapSocialButtons_Facebook{
+    
+  var $provides = array(
+    'facebook_like_button' => 'button',
+    'facebook_like_footer' => 'footer');
+        
   public function button($caller) {
     global $post;
     $options = $caller->get_option('facebook_like');
