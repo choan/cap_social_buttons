@@ -17,10 +17,6 @@ class CapSocialButtons_Facebook{
       $template = '<fb:like href="%1$s" send="%2$s" layout="%3$s" width="%4$s" show_faces="%5$s"></fb:like>';
     }
 
-    if ($options['send'] && $options['layout'] == 'button_count') {
-      $options['send'] = false;
-    }
-
     $buttons = sprintf($template, $url, CapSocialButtons::bool_to_s($options['send']), $options['layout'], $options['width'], CapSocialButtons::bool_to_s($options['show_faces']));
     return $buttons;
   }

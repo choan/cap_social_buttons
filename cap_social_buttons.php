@@ -11,6 +11,7 @@ Author URI: http://choangalvez.nom.es/
 define('CAP_SOCIAL_BUTTONS_PATH', dirname(__FILE__));
 define('CAP_SOCIAL_BUTTONS_INCLUDE_PATH', CAP_SOCIAL_BUTTONS_PATH . '/include');
 define('CAP_SOCIAL_BUTTONS_FILE', __FILE__);
+define('CAP_SOCIAL_BUTTONS_PLUGIN_URL', plugins_url(basename(dirname(CAP_SOCIAL_BUTTONS_FILE))));
 
 require CAP_SOCIAL_BUTTONS_INCLUDE_PATH . '/tags.php';
 require CAP_SOCIAL_BUTTONS_INCLUDE_PATH . '/class.cap_social_buttons.php';
