@@ -24,7 +24,7 @@ class CapSocialButtons {
       'colorscheme' => 'light',
       'ref' => null,
       'implementation' => 'xfbml',
-      'width' => '250'),
+      'width' => '190'),
     'twitter_share' => array(
       'via' => 'ukexin',
       'text' => '%title%'),

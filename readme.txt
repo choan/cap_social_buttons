@@ -1,5 +1,7 @@
 === Cap Social Buttons ===
 
+**NOT READY FOR PRODUCTION**
+
 Contributors: choan
 Donate link: http://choangalvez.nom.es/
 Tags: social, sharing
